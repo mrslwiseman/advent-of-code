@@ -1,5 +1,4 @@
 import { getInput } from "../util";
-import type { InputFileType } from "../util";
 
 export function splitCompartments(items: string) {
   return [
@@ -22,9 +21,7 @@ export function getPriority(character: string) {
   return character.charCodeAt(0) - (/[A-Z]/.test(character) ? 38 : 96);
 }
 
-export async function main1(file: InputFileType) {
-  const data = await getInput(3, file);
-
+export async function main1(data: string) {
   const sum = data.split("\n").reduce((acc, line) => {
     if (/done/i.test(line)) {
       return acc;
@@ -77,8 +74,7 @@ export function chunk(input: any[], count: number) {
   }, []);
 }
 
-export async function main2(file: InputFileType) {
-  const data = await getInput(3, file);
+export async function main2(data: string) {
   const lines = data.split("\n");
   const chunkedLines = chunk(lines, 3);
 

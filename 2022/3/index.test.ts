@@ -1,5 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 import assert from "assert/strict";
+import { getExampleInput, getInput } from "../util";
 import {
   chunk,
   findCommonGroupItems,
@@ -9,18 +10,6 @@ import {
   main2,
   splitCompartments,
 } from "./index";
-
-/* 
-
-Rock A,X
-Paper B,Y
-Scissors C,Z
-
-X Lose
-Y Draw
-Z Win
-
-*/
 
 describe("part 1", () => {
   test("must split compartments of even length", async () => {
@@ -72,7 +61,7 @@ describe("part 1", () => {
   });
 
   test("example: must calculate total sum for all backpacks", async () => {
-    const toatl = await main1("example");
+    const toatl = await main1(await getExampleInput(__dirname));
     expect(toatl).toEqual(157);
   });
 
@@ -103,12 +92,12 @@ CrZsJsPPZsGzwwsLwLmpwMDw`
   });
 
   test("example: must calculate total sum for all backpacks", async () => {
-    const total = await main2("example");
+    const total = await main2(await getExampleInput(__dirname));
     expect(total).toEqual(70);
   });
 
   test("real: must calculate total sum for all backpacks", async () => {
-    const total = await main2("real");
+    const total = await main2(await getInput(__dirname));
     expect(total).toEqual(2805);
   });
 });

@@ -1,8 +1,6 @@
 import { getInput } from "../util";
-import type { InputFileType } from "../util";
 
-export async function main1(file: InputFileType) {
-  const data = await getInput(file);
+export async function main1(data: string) {
   return data
     .split("\n\n")
     .reduce<number[]>((acc, elf) => {
@@ -15,8 +13,7 @@ export async function main1(file: InputFileType) {
     .sort((a, b) => b - a)[0];
 }
 
-export async function main2(file: InputFileType) {
-  const data = await getInput(file);
+export async function main2(data: string) {
   const sortedCounts = data
     .split("\n\n")
     .reduce<number[]>((acc, elf) => {

@@ -1,5 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 import assert from "assert/strict";
+import { getExampleInput, getInput } from "../util";
 import { getInferiorHand, getSuperiorHand, main1, main2 } from "./index";
 
 /* 
@@ -16,11 +17,11 @@ Z Win
 
 describe("part 1", () => {
   test("must return score of winner", async () => {
-    const result = await main1("example");
+    const result = await main1(await getExampleInput(__dirname));
     assert.equal(result, 15);
   });
   test("must return score of winner 2", async () => {
-    const result = await main1("real");
+    const result = await main1(await getInput(__dirname));
     assert.equal(result, 14069);
   });
 });
@@ -65,11 +66,11 @@ describe("get inferior hand", () => {
 
 describe("part 2", () => {
   test("must return total score", async () => {
-    const result = await main2("example");
+    const result = await main2(await getExampleInput(__dirname));
     assert.equal(result, 12);
   });
   test("must return total score", async () => {
-    const result = await main2("real");
+    const result = await main2(await getInput(__dirname));
     assert.equal(result, 12411);
   });
 });

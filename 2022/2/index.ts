@@ -1,5 +1,4 @@
 import { getInput } from "../util";
-import type { InputFileType } from "../util";
 
 type HandType = "rock" | "paper" | "scissors";
 
@@ -33,9 +32,7 @@ function getHand(hand: string): HandType {
 }
 
 // Todo: refactor by limiting the amount of iteration here ( im sleepy )
-export async function main1(file: InputFileType) {
-  const data = await getInput(2, file);
-
+export async function main1(data: string) {
   const turns = data
     .split("\n")
     .filter((line) => /[ABCXYZ]/.test(line))
@@ -136,9 +133,8 @@ function getResponse(turn: string, response: string) {
   }
 }
 
-export async function main2(file: InputFileType) {
-  const input = await getInput(2, file);
-  const totalScore = input.split("\n").reduce((acc, line) => {
+export async function main2(data: string) {
+  const totalScore = data.split("\n").reduce((acc, line) => {
     if (!/[ABCXYZ]/.test(line)) {
       return acc;
     }

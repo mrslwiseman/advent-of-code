@@ -1,5 +1,4 @@
 import { getInput } from "../util";
-import type { InputFileType } from "../util";
 
 type Range = {
   start: number;
@@ -38,9 +37,7 @@ export function findPartialOverlap(a: Range, b: Range) {
   return false;
 }
 
-export async function main1(file: InputFileType) {
-  const data = await getInput(4, file);
-
+export async function main1(data: string) {
   const input = data.split("\n");
 
   const result = input.reduce((overlapCount, curr) => {
@@ -61,9 +58,7 @@ export async function main1(file: InputFileType) {
   return result;
 }
 
-export async function main2(file: InputFileType) {
-  const data = await getInput(4, file);
-
+export async function main2(data: string) {
   const input = data.split("\n");
 
   const result = input.reduce((overlapCount, curr) => {
