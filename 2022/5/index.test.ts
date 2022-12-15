@@ -1,6 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 import { getExampleInput, getInput } from "../util";
-import { main1, parseInput, parseStacks, parseSteps } from "./index";
+import { main1, main2, parseInput, parseStacks, parseSteps } from "./index";
 
 describe("2022-05-1", () => {
   test("must parse steps input", async () => {
@@ -62,5 +62,23 @@ Is repesented by [["Z", "N"], ["M", "C", "D"], ["P"]]
     const result = await main1(input);
 
     expect(result).toEqual("PTWLTDSJV");
+  });
+});
+
+describe.only("2022-05-2", () => {
+  test("must move items around according to steps", async () => {
+    const input = await getExampleInput(__dirname);
+
+    const result = await main2(input);
+
+    expect(result).toEqual("MCD");
+  });
+
+  test("must move items around according to steps", async () => {
+    const input = await getInput(__dirname);
+
+    const result = await main2(input);
+
+    expect(result).toEqual("MCD");
   });
 });

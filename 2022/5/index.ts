@@ -61,7 +61,7 @@ export function parseInput(input: string): ParsedInput {
   return { stacks, steps };
 }
 
-function mutateStacks(input: ParsedInput) {
+function mutateStacks9000(input: ParsedInput) {
   const next = input.steps.reduce((acc, { quantity, source, dest }) => {
     const removed = acc[source - 1].splice(acc[source - 1].length - quantity);
     acc[dest - 1] = [...acc[dest - 1], ...removed.reverse()];
@@ -72,7 +72,7 @@ function mutateStacks(input: ParsedInput) {
 }
 
 export async function main1(data: string) {
-  const result = mutateStacks(parseInput(data));
+  const result = mutateStacks9000(parseInput(data));
 
   const topCrates = result
     .reduce((acc, curr) => {
@@ -83,6 +83,24 @@ export async function main1(data: string) {
   return topCrates;
 }
 
+function mutateStacks9001(input: ParsedInput) {
+  const next = input.steps.reduce((acc, { quantity, source, dest }) => {
+    const removed = acc[source - 1].splice(acc[source - 1].length - quantity);
+    acc[dest - 1] = [...acc[dest - 1], ...removed];
+    return acc;
+  }, input.stacks);
+
+  return next;
+}
+
 export async function main2(data: string) {
-  //
+  const result = mutateStacks9001(parseInput(data));
+
+  const topCrates = result
+    .reduce((acc, curr) => {
+      return [...acc, curr[curr.length - 1]];
+    }, [])
+    .join("");
+
+  return topCrates;
 }
