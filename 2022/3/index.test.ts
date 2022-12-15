@@ -1,8 +1,7 @@
 import { describe, expect, test } from "@jest/globals";
 import assert from "assert/strict";
-import { getExampleInput, getInput } from "../util";
+import { chunk, getExampleInput, getInput } from "../util";
 import {
-  chunk,
   findCommonGroupItems,
   findCommonItems,
   getPriority,

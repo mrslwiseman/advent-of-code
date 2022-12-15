@@ -1,4 +1,4 @@
-import { getInput } from "../util";
+import { chunk, getInput } from "../util";
 
 export function splitCompartments(items: string) {
   return [
@@ -59,19 +59,6 @@ export function findCommonGroupItems(backpackGroups: string[]) {
   }
 
   return commonChar;
-}
-
-export function chunk(input: any[], count: number) {
-  return input.reduce<string[][]>((acc, current) => {
-    let currentBatch = acc[acc.length - 1] || [];
-    if (currentBatch.length < count) {
-      currentBatch.push(current);
-      acc[acc.length - 1 < 0 ? 0 : acc.length - 1] = currentBatch;
-    } else {
-      acc.push([current]);
-    }
-    return acc;
-  }, []);
 }
 
 export async function main2(data: string) {
