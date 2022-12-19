@@ -9,7 +9,7 @@
     "npm": ">= 8 < 9"
   },
   "scripts": {
-    "test": "jest"
+    "watch": "node --inspect ./node_modules/jest/bin/jest.js --watch 2022/$DAY/index.test.ts"
   },
   "repository": {
     "type": "git",
