@@ -81,12 +81,6 @@ function hasTallerNeighbours(x: number, y: number, grid: number[][]) {
 export function main1(input: string[]) {
   const lines = input.map((line) => line.split("").map((s) => Number(s)));
 
-  const tempResult = lines.map((line, y) =>
-    line.map((_d, x) => hasTallerNeighbours(x, y, lines))
-  );
-
-  console.log(tempResult);
-
   const result = lines.reduce((acc, line, y) => {
     const count = line.reduce((lineAcc, _tree, x) => {
       const isVisible = hasTallerNeighbours(x, y, lines);
@@ -95,10 +89,70 @@ export function main1(input: string[]) {
     return acc + count;
   }, 0);
 
-  console.log(lines);
   return result;
 }
 
-export async function main2(data: string) {
-  //
+export async function main2(input: string[]) {
+  const lines = input.map((line) => line.split("").map((s) => Number(s)));
+
+  const xMax = lines[0].length;
+  const yMax = lines.length;
+
+  const results: number[][] = lines.map((line) => line.map(() => 0));
+  let maxScenicScoreSeen = 0;
+
+  for (let y = 1; y < yMax - 1; y++) {
+    for (let x = 1; x < xMax - 1; x++) {
+      const treeHeight = lines[y][x];
+      let left = 0;
+      let right = 0;
+      let above = 0;
+      let below = 0;
+
+      // left
+      for (let xLeft = x - 1; xLeft >= 0; xLeft--) {
+        const neighbour = lines[y][xLeft];
+        left += 1;
+        if (neighbour >= treeHeight) {
+          break;
+        }
+      }
+
+      // right
+      for (let xRight = x + 1; xRight < xMax; xRight++) {
+        const neighbour = lines[y][xRight];
+        right += 1;
+        if (neighbour >= treeHeight) {
+          break;
+        }
+      }
+
+      // above
+      for (let yAbove = y - 1; yAbove >= 0; yAbove--) {
+        const neighbour = lines[yAbove][x];
+        above += 1;
+        if (neighbour >= treeHeight) {
+          break;
+        }
+      }
+
+      // below
+      for (let yBelow = y + 1; yBelow < yMax; yBelow++) {
+        const neighbour = lines[yBelow][x];
+        below += 1;
+        if (neighbour >= treeHeight) {
+          break;
+        }
+      }
+
+      const scenicScore = left * right * above * below;
+
+      if (scenicScore > maxScenicScoreSeen) {
+        maxScenicScoreSeen = scenicScore;
+      }
+      results[y][x] = scenicScore;
+    }
+  }
+
+  return maxScenicScoreSeen;
 }
