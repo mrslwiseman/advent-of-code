@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "target": "ES2022",
+    "types": ["node"]
+  },
+  "include": ["*.s"],
+  "exclude": ["src/**/*.test.mts"],
+  "ts-node": {
+    "files": true
+  }
+}

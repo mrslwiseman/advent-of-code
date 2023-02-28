@@ -1,0 +1,6 @@
+// draw
+A Y
+// lose
+B X
+// win
+C Z
